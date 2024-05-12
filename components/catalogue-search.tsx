@@ -21,12 +21,21 @@ import { Input } from "@/components/ui/input"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import ArtworkCard from "./ArtworkCard"
+
 
 const MEDIA = ['print', 'painting', 'sculpture', 'mixed-media', 'photography', 'drawing']
 const GENRES = ['American', 'European', 'Latin American', 'Asian', 'Contemporary']
 
 
-export function CatalogueSearch() {
+export function CatalogueSearch({ artworks = [] }) {
   return (
     <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-[300px_1fr] gap-6">
       <div className="bg-white dark:bg-gray-950 rounded-lg shadow-lg p-6 space-y-6 lg:sticky lg:top-6">
@@ -40,31 +49,50 @@ export function CatalogueSearch() {
         </div>
         <div className="space-y-4">
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-2">Search by Genre</h3>
-            <div className="space-y-2">
-              {GENRES.map((genre) => (
-                <div key={genre} className="flex items-center space-x-2">
-                  <Checkbox id={genre} />
-                  <Label className="text-gray-500 dark:text-gray-400 font-medium" htmlFor={genre}>
-                    {genre}
-                  </Label>
-                </div>
-              ))}
-            </div>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>
+                  <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-2">Search by Genre</h3>
+                </AccordionTrigger>
+                <AccordionContent>
+
+                  <div className="space-y-2">
+                    {GENRES.map((genre) => (
+                      <div key={genre} className="flex items-center space-x-2">
+                        <Checkbox id={genre} />
+                        <Label className="text-gray-500 dark:text-gray-400 font-medium" htmlFor={genre}>
+                          {genre}
+                        </Label>
+                      </div>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-2">Search by Media</h3>
-            <div className="space-y-2">
-              {MEDIA.map((medium) => (
-                <div key={medium} className="flex items-center space-x-2">
-                  <Checkbox id={medium} />
-                  <Label className="text-gray-500 dark:text-gray-400 font-medium" htmlFor={medium}>
-                    {medium}
-                  </Label>
-                </div>
-              ))}
-            </div>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>
+                  <h3 className="text-sm font-semibold text-gray-900 dark:text-gray-50 mb-2">Search by Media</h3>
+                </AccordionTrigger>
+                <AccordionContent>
+
+                  <div className="space-y-2">
+                    {MEDIA.map((media) => (
+                      <div key={media} className="flex items-center space-x-2">
+                        <Checkbox id={media} />
+                        <Label className="text-gray-500 dark:text-gray-400 font-medium" htmlFor={media}>
+                          {media}
+                        </Label>
+                      </div>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
+
           <Button variant="outline">Search</Button>
         </div>
       </div>
@@ -81,124 +109,13 @@ export function CatalogueSearch() {
             <span className="sr-only">Toggle filters</span>
           </Button>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
-            <img
-              alt="Card Image"
-              className="w-full h-48 object-cover"
-              height={250}
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "400/250",
-                objectFit: "cover",
-              }}
-              width={400}
-            />
-            <div className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Card Title</h3>
-              <p className="text-gray-500 dark:text-gray-400 line-clamp-2">
-                This is a description of the card. It can be a bit longer and will be truncated after two lines.
-              </p>
-            </div>
-          </div>
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
-            <img
-              alt="Card Image"
-              className="w-full h-48 object-cover"
-              height={250}
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "400/250",
-                objectFit: "cover",
-              }}
-              width={400}
-            />
-            <div className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Another Card</h3>
-              <p className="text-gray-500 dark:text-gray-400 line-clamp-2">
-                This is another card description that is a bit longer to showcase the truncation.
-              </p>
-            </div>
-          </div>
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
-            <img
-              alt="Card Image"
-              className="w-full h-48 object-cover"
-              height={250}
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "400/250",
-                objectFit: "cover",
-              }}
-              width={400}
-            />
-            <div className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Third Card</h3>
-              <p className="text-gray-500 dark:text-gray-400 line-clamp-2">
-                This is the third card description, also with a bit more text to demonstrate the truncation.
-              </p>
-            </div>
-          </div>
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
-            <img
-              alt="Card Image"
-              className="w-full h-48 object-cover"
-              height={250}
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "400/250",
-                objectFit: "cover",
-              }}
-              width={400}
-            />
-            <div className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Fourth Card</h3>
-              <p className="text-gray-500 dark:text-gray-400 line-clamp-2">
-                This is the fourth card description, also with a bit more text to demonstrate the truncation.
-              </p>
-            </div>
-          </div>
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
-            <img
-              alt="Card Image"
-              className="w-full h-48 object-cover"
-              height={250}
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "400/250",
-                objectFit: "cover",
-              }}
-              width={400}
-            />
-            <div className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Fifth Card</h3>
-              <p className="text-gray-500 dark:text-gray-400 line-clamp-2">
-                This is the fifth card description, also with a bit more text to demonstrate the truncation.
-              </p>
-            </div>
-          </div>
-          <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden">
-            <img
-              alt="Card Image"
-              className="w-full h-48 object-cover"
-              height={250}
-              src="/placeholder.svg"
-              style={{
-                aspectRatio: "400/250",
-                objectFit: "cover",
-              }}
-              width={400}
-            />
-            <div className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-50">Sixth Card</h3>
-              <p className="text-gray-500 dark:text-gray-400 line-clamp-2">
-                This is the sixth card description, also with a bit more text to demonstrate the truncation.
-              </p>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:overflow-y-auto lg:max-h-[650px]">
+          {artworks.map(artwork => (
+            <ArtworkCard url={artwork.url} artist={artwork.artistName} artworkName={artwork.artworkName} />
+          ))}
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
