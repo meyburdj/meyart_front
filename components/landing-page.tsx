@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Contact } from "./contact"
+import Image from "next/image"
 
 export function LandingPage() {
   return (
@@ -7,13 +8,21 @@ export function LandingPage() {
       <section className="w-full py-12 md:py-16 lg:py-24">
         <div className="container px-4 md:px-6">
           <div className="grid gap-6 lg:grid-cols-[1fr_550px] lg:gap-12 xl:grid-cols-[1fr_650px]">
-            <img
+            <Image
+              alt="Hero Artwork"
+              height={650}
+              width={650}
+              src={"https://i.ibb.co/1dsq3Fg/sm-Bearden20220912-114438.jpg"}
+              className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
+              priority={true}
+            />
+            {/* <img
               alt="Hero Artwork"
               className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
               height="650"
               src="https://i.ibb.co/1dsq3Fg/sm-Bearden20220912-114438.jpg"
               width="650"
-            />
+            /> */}
             <div className="flex flex-col justify-center space-y-4">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
@@ -40,13 +49,20 @@ export function LandingPage() {
             <div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">American Art</h2>
               <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-                <img
+                <Image
+                  alt="American Art"
+                  height={300}
+                  width={300}
+                  src={"https://i.ibb.co/SyvWsdQ/med-Youngerman-galaxy-Apple-Green19-75-20221003-122224.jpg"}
+                  className="aspect-square overflow-hidden rounded-xl object-cover"
+                />
+                {/* <img
                   alt="American Art"
                   className="aspect-square overflow-hidden rounded-xl object-cover"
                   height="300"
                   src="https://i.ibb.co/SyvWsdQ/med-Youngerman-galaxy-Apple-Green19-75-20221003-122224.jpg"
                   width="300"
-                />
+                /> */}
                 <img
                   alt="American Art"
                   className="aspect-square overflow-hidden rounded-xl object-cover"

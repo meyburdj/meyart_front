@@ -9,8 +9,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import ArtworkCard from "./ArtworkCard"
+import SearchIconSelf from "./icons/searchIcon"
 
 
 const MEDIA = ['print', 'painting', 'sculpture', 'mixed-media', 'photography', 'drawing']
@@ -19,10 +19,10 @@ const GENRES = ['American', 'European', 'Latin American', 'Asian', 'Contemporary
 
 export function CatalogueSearch({ artworks = [] }) {
   return (
-    <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-[300px_1fr] gap-6">
+    <div className="w-full max-w-6xl mx-auto grid lg:grid-cols-[300px_1fr] gap-6 ">
       <div className="bg-white dark:bg-gray-950 rounded-lg shadow-lg p-6 space-y-6 lg:sticky lg:top-6">
         <div className="flex items-center space-x-4">
-          <SearchIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+          <SearchIconSelf className="h-5 w-5 text-gray-500 dark:text-gray-400" />
           <Input
             className="flex-1 bg-transparent border-none focus:ring-0 text-gray-900 dark:text-gray-50 placeholder-gray-500 dark:placeholder-gray-400"
             placeholder="Search by artist"
@@ -86,45 +86,5 @@ export function CatalogueSearch({ artworks = [] }) {
         </div>
       </div>
     </div >
-  )
-}
-
-function FilterIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
-    </svg>
-  )
-}
-
-
-function SearchIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
   )
 }
