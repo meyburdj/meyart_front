@@ -1,4 +1,5 @@
 import { CatalogueSearch } from "@/components/catalogue-search"
+import { ArtworkTruncated } from "@/types"
 
 const artwork = {
     artistName: "Bearden, Romare",
@@ -25,9 +26,22 @@ const artwork5 = {
     artworkName: "Galaxy: Apple Green ",
     url: "https://i.ibb.co/vqzgwQs/med-Youngerman-galaxy-Apple-Green19-75-20221003-122224.jpg"
 }
-const artworks = [artwork, artwork2, artwork3, artwork4, artwork5, artwork2, artwork]
+const artworksTest = [artwork, artwork2, artwork3, artwork4, artwork5, artwork2, artwork]
 
-export default function Catalogue() {
+export default async function Catalogue() {
+
+    const artworkURL = new URL(`${process.env.BACKEND_API_URL}/artworks`);
+    async function fetchArtworks(url: string): Promise<ArtworkTruncated[]> {
+        const response = await fetch(url, { next: { revalidate: 0 } });
+        if (!response.ok) {
+            throw new Error('Failed to fetch artworks');
+        }
+        const data = await response.json();
+        console.log('data', data)
+        return data;
+    }
+
+    const artworks = await fetchArtworks(artworkURL.toString())
     return (
         <CatalogueSearch artworks={artworks} />
     )
