@@ -15,7 +15,7 @@ export function CatalogueSearch({ artworks = [] }) {
       <div className="bg-white dark:bg-gray-950 rounded-lg shadow-lg p-6 space-y-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:overflow-y-auto lg:max-h-[650px] p-2">
           {artworks.map(artwork => (
-            <ArtworkCard key={artwork.artworkName} url={artwork.url} artist={artwork.artist_name} artworkName={artwork.title} />
+            <ArtworkCard key={artwork.artworkName} url={artwork.url} artist={artwork.artist_name} artworkName={artwork.title} id={artwork.id} />
           ))}
         </div>
       </div>
